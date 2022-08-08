@@ -3,6 +3,7 @@
 namespace ECommerce
 {
     using AutoMapper;
+    using FluentValidation;
     using Microsoft.AspNetCore.Mvc;
     using System.ComponentModel.DataAnnotations;
 
@@ -12,17 +13,14 @@ namespace ECommerce
     {
         private readonly IProductUnitOfWork _productUnitOfWork;
 
-        protected Mapper _mapper;
+       private readonly IMapper _mapper;
+        private readonly IValidator<ProductViewModel> _validator;
 
-        public ProductsController(IProductUnitOfWork productUnitOfWork)
+        public ProductsController(IProductUnitOfWork productUnitOfWork, IMapper mapper, IValidator<ProductViewModel> validator)
         {
             _productUnitOfWork = productUnitOfWork;
-
-            var mapperConfiguration = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Product, ProductViewModel>().ReverseMap();
-            });
-            _mapper = new Mapper(mapperConfiguration);
+            _mapper = mapper;   
+            _validator = validator;
         }
 
         // GET: api/<ProductsController>
@@ -40,7 +38,7 @@ namespace ECommerce
             Product product = await _productUnitOfWork.ReadByIdAsync(id);
             ProductViewModel productViewModel = _mapper.Map<ProductViewModel>(product);
 
-            FluentValidation.Results.ValidationResult validationResult = await new ProductValidator().ValidateAsync(productViewModel);
+            var  validationResult = await _validator.ValidateAsync(productViewModel);
 
             if (!validationResult.IsValid)
                 return BadRequest(new { errors = validationResult.Errors });

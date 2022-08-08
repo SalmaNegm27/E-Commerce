@@ -1,4 +1,5 @@
 using ECommerce;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +20,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductUnitOfWork, ProductUnitOfWork>();
 
-
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddScoped<IValidator<ProductViewModel>, ProductValidator>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
