@@ -1,6 +1,6 @@
 ﻿namespace ECommerce.Application
 {
-    public interface IBaseUnitOfWork<T> where T :class
+    public interface IBaseUnitOfWork<T> where T : BaseEntity
     {
        Task<T> CreateAsync(T entity);
         Task<T> UpdateAsync(T entity);

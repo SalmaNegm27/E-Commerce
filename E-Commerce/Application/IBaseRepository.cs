@@ -1,10 +1,11 @@
 ﻿namespace ECommerce.Application
 {
+    using Microsoft.EntityFrameworkCore;
     using System.Linq.Expressions;
 
     public interface IBaseRepository<T>
     {
-        ApplicationDbContext Context { get; }
+         DbContext DbContext { get; }
         Task<T> AddAsync(T entity);
         Task<T> EditAsync(T entity);
         Task<T> DeleteAsync(Guid id);

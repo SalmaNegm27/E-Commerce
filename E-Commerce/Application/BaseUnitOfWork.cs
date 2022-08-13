@@ -1,19 +1,18 @@
 ﻿namespace ECommerce.Application
 {
+    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
-    using System.Linq.Expressions;
     using System.Threading.Tasks;
 
     public class BaseUnitOfWork<T> : IBaseUnitOfWork<T> where T : BaseEntity
     {
-        protected ApplicationDbContext _context;
-
+        protected DbContext _context;
         private readonly IBaseRepository<T> _baseRepository;
         public BaseUnitOfWork(IBaseRepository<T> baseRepository)
         {
             _baseRepository = baseRepository;
-            _context = baseRepository.Context;
+            _context = baseRepository.DbContext;
         }
 
         public async Task<T> CreateAsync(T entity)

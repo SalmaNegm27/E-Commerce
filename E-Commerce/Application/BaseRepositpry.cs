@@ -10,12 +10,12 @@ namespace ECommerce.Application
 
     public class BaseRepositpry<T> : IBaseRepository<T> where T : BaseEntity
     {
-       
-        public ApplicationDbContext Context { get; }
+
+        public DbContext DbContext { get; }
         protected DbSet<T> _Set;
         public BaseRepositpry(ApplicationDbContext context)
         {
-            Context = context;
+            DbContext = context;
             _Set = context.Set<T>();
         }
 
@@ -25,20 +25,17 @@ namespace ECommerce.Application
             return entity;
            
         }
-        public async Task<T> GetByIdAsync(Guid id)
-        {
-         return  await  _Set.FirstOrDefaultAsync(c => c.Id == id);
-        }
+        public async Task<T> GetByIdAsync(Guid id) => await _Set.FirstOrDefaultAsync(c => c.Id == id);
 
-        public async Task<T> DeleteAsync(Guid id)
+        public  async Task<T> DeleteAsync(Guid id)
         {
           var result=  await GetByIdAsync(id);
             if (result == null)
                 throw new Exception("The Entity doesnt exist");
             _Set.Remove(result);
-            return result;
+            return result;    
         }
-
+  
         public async Task<T> EditAsync(T entity)
         {
             T entityEntry = await GetByIdAsync(entity.Id);
@@ -48,15 +45,9 @@ namespace ECommerce.Application
                 return _Set.Update(entity).Entity;
         }
 
-        public async Task<List<T>> GetAllAsync()
-        {
-           return await _Set.ToListAsync();
-        }
+        public async Task<List<T>> GetAllAsync() => await _Set.ToListAsync();
 
-        public async Task<List<T>> GetByExprissionAsync(Expression<Func<T, bool>> expression)
-        {
-            return await _Set.ToListAsync();
-        }
+        public async Task<List<T>> GetByExprissionAsync(Expression<Func<T, bool>> expression) => await _Set.ToListAsync();
 
     }
 }
