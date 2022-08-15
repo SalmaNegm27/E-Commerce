@@ -36,19 +36,16 @@
             return result;
 
         }
-
-        public async Task<List<T>> ReadAsync()
-        {
-            List<T> values = await _baseRepository.GetAllAsync();
-           await _context.SaveChangesAsync();
-            return values;
-        }
-
         public async Task<T> ReadByIdAsync(Guid id)
         {
            T result =   await _baseRepository.GetByIdAsync(id);
           await   _context.SaveChangesAsync();
             return result;
+        }
+
+        public Task <IEnumerable<T>> ReadAsync()
+        {
+           return  _baseRepository.GetAllAsync();
         }
     }
 }

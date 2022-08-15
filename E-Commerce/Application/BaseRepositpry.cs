@@ -21,8 +21,8 @@ namespace ECommerce.Application
 
         public async Task<T> AddAsync(T entity)
         {
-            await  _Set.AddAsync(entity);
-            return entity;
+            return (await _Set.AddAsync(entity)).Entity;
+            
            
         }
         public async Task<T> GetByIdAsync(Guid id) => await _Set.FirstOrDefaultAsync(c => c.Id == id);
@@ -45,9 +45,14 @@ namespace ECommerce.Application
                 return _Set.Update(entity).Entity;
         }
 
-        public async Task<List<T>> GetAllAsync() => await _Set.ToListAsync();
+       
 
         public async Task<List<T>> GetByExprissionAsync(Expression<Func<T, bool>> expression) => await _Set.ToListAsync();
 
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await _Set.ToListAsync();
+        }
     }
 }
+

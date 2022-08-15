@@ -10,7 +10,7 @@
         Task<T> EditAsync(T entity);
         Task<T> DeleteAsync(Guid id);
         Task<T> GetByIdAsync(Guid id);
-        Task<List<T>> GetAllAsync();
+       Task<IEnumerable<T> >GetAllAsync();
         Task<List<T>> GetByExprissionAsync(Expression<Func<T, bool>> expression);
 
     }

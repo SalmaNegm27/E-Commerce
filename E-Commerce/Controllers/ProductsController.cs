@@ -5,6 +5,7 @@ namespace ECommerce
     using AutoMapper;
     using FluentValidation;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore.ChangeTracking;
     using System.ComponentModel.DataAnnotations;
 
     [Route("api/[controller]")]
@@ -25,10 +26,16 @@ namespace ECommerce
 
         // GET: api/<ProductsController>
         [HttpGet]
-        public async Task<IEnumerable<ProductViewModel>> Get()
+
+        public async  Task<IActionResult> GetAll()
         {
-            List<Product> entities = await _productUnitOfWork.ReadAsync();
-            return entities.Select(product => _mapper.Map<ProductViewModel>(product));
+            var entities = await _productUnitOfWork.ReadAsync();
+           
+            var entitiesResult = _mapper.Map<IEnumerable<ProductViewModel>>(entities);
+           
+            return Ok(entitiesResult);
+
+
         }
 
         // GET api/<ProductsController>/5
@@ -38,7 +45,7 @@ namespace ECommerce
             Product product = await _productUnitOfWork.ReadByIdAsync(id);
             ProductViewModel productViewModel = _mapper.Map<ProductViewModel>(product);
 
-            var  validationResult = await _validator.ValidateAsync(productViewModel);
+            var validationResult = await _validator.ValidateAsync(productViewModel);
 
             if (!validationResult.IsValid)
                 return BadRequest(new { errors = validationResult.Errors });

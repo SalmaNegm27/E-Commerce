@@ -4,7 +4,7 @@
 
     public class ProductUnitOfWork : BaseUnitOfWork<Product>, IProductUnitOfWork
     {
-        public ProductUnitOfWork(IBaseRepository<Product> baseRepository) : base(baseRepository)
+        public ProductUnitOfWork(IProductRepository productRepository) : base(productRepository)
         {
         }
     }
