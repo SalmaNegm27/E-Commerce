@@ -17,8 +17,9 @@
 
         public async Task<T> CreateAsync(T entity)
         {
-          return await _baseRepository.AddAsync(entity);
-          await  _context.SaveChangesAsync();
+           await _baseRepository.AddAsync(entity);
+           await  _context.SaveChangesAsync();
+            return entity;
         }
 
         public async Task<T> UpdateAsync(T entity)
