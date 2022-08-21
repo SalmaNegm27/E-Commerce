@@ -1,6 +1,13 @@
+using Categories.Entities;
+using Categories.Repositories;
+using Categories.UnitOfWorks;
+using Categories.Validators;
+using Categories.ViewModels;
 using ECommerce;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Products.Entities;
+using System.Reflection.Emit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,12 +25,26 @@ options
     .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
+builder.Services.AddScoped<DbContext, ApplicationDbContext>();
+
+        
+
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryUnitOfWork, CategoryUnitOfWork>();
+
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductUnitOfWork, ProductUnitOfWork>();
 
+builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(Product).Assembly,typeof(Category).Assembly);
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
 builder.Services.AddScoped<IValidator<ProductViewModel>, ProductValidator>();
+builder.Services.AddScoped<IValidator<CategoryViewModel>, CategoryValidator>();
+
+
+
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
