@@ -1,17 +1,17 @@
 ﻿namespace ECommerce.Entities.Configurations
 {
     using Categories.Entities;
+    using ECommerce.Application;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
+    public class CategoryConfiguration : BaseEntityConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public override void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.ToTable("Categories");
 
-            builder.HasKey(c => c.Id);
-
+          
             builder.Property(c => c.Name).IsRequired().HasMaxLength(400);
             builder.Property(c => c.NameSecondLanguage).IsRequired().HasMaxLength(400);
 

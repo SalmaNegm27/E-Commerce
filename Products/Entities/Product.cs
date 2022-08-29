@@ -6,7 +6,8 @@
     public class Product : BaseEntity
 
     {
-       
+        public string Name { get; set; }
+        public string NameSecondLanguage { get; set; }
         public string Description { get; set; }
         public string DescriptionSecondLanguage { get; set; }
         
@@ -16,5 +17,6 @@
         public float Rate { get; set; }
 
         public List<ProductCategory> ProductCategories { get; set; }
+        public List<ProductOrder> productOrders  { get; set; }
     }
 }

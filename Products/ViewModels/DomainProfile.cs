@@ -9,6 +9,7 @@
         public DomainProfile()
         {
             CreateMap<Product, ProductViewModel>().ReverseMap();
+            CreateMap<ProductCategory, ProductCategoryViewModel>().ReverseMap();    
         }
     }
 }

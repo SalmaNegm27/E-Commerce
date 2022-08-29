@@ -10,6 +10,6 @@
         public string Description { get; set; }
         public string DescriptionSecondLanguage { get; set; }
 
-        public List<ProductCategoryViewModel> productCategoryViewModel { get; set; }
+        public List<ProductCategoryViewModel> productCategories { get; set; }
     }
 }

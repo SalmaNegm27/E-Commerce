@@ -1,5 +1,6 @@
 ﻿namespace Products.ViewModels
 {
+    using ECommerce.Application;
     using Products.Entities;
     using System;
     using System.Collections.Generic;
@@ -7,9 +8,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class ProductCategoryViewModel
+    public class ProductCategoryViewModel :BaseViewModel
     {
-        public Guid Id { get; set; }
+      
 
         public Guid ProductId { get; set; }
         public Product Product { get; set; }
