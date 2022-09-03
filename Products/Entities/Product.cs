@@ -2,6 +2,7 @@
 {
     using ECommerce;
     using ECommerce.Application;
+    using Orders.Entities;
 
     public class Product : BaseEntity
 
@@ -17,6 +18,6 @@
         public float Rate { get; set; }
 
         public List<ProductCategory> ProductCategories { get; set; }
-        public List<ProductOrder> productOrders  { get; set; }
+        public List<ProductOrder> ProductOrders { get; set; }
     }
 }

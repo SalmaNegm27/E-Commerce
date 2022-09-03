@@ -1,7 +1,7 @@
-﻿namespace ECommerce
+﻿namespace Products.ViewModels
 {
     using ECommerce.Application;
-    using Products.ViewModels;
+    
 
     public class ProductViewModel :BaseViewModel
     {
@@ -16,5 +16,6 @@
         public decimal Price { get; set; }
         public float Rate { get; set; }
         public List<ProductCategoryViewModel> productCategories { get; set; }
+        public List<ProductOrderViewModel> productOrders { get; set; }
     }
 }       

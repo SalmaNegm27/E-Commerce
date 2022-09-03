@@ -1,10 +1,10 @@
-﻿namespace Categories.Repositories
+﻿namespace Sellers.Repositories
 {
     using Customers.Entities;
     using ECommerce;
     using ECommerce.Application;
     using Microsoft.EntityFrameworkCore;
-   
+    using Sellers.Entities;
 
     public class SellerRepository : BaseRepositpry<Seller>, ISellerRepository
     {

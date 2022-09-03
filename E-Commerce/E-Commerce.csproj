@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>disable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>disable</ImplicitUsings>
     <RootNamespace>ECommerce</RootNamespace>
   </PropertyGroup>
 
@@ -26,11 +26,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Adress\Adresses.csproj" />
     <ProjectReference Include="..\Categories\Catgories.csproj" />
     <ProjectReference Include="..\Category\Category.csproj" />
     <ProjectReference Include="..\Comman\Comman.csproj" />
+    <ProjectReference Include="..\Customers\Customers.csproj" />
+    <ProjectReference Include="..\Orders\Orders.csproj" />
+    <ProjectReference Include="..\Payment\Payments.csproj" />
     <ProjectReference Include="..\Products\Products.csproj" />
     <ProjectReference Include="..\Product\Product.csproj" />
+    <ProjectReference Include="..\Sellers\Sellers.csproj" />
   </ItemGroup>
 
 </Project>

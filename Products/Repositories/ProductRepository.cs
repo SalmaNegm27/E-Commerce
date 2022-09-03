@@ -1,4 +1,4 @@
-﻿namespace ECommerce
+﻿namespace Products.Reposirories
 {
     using ECommerce.Application;
     using Microsoft.EntityFrameworkCore;

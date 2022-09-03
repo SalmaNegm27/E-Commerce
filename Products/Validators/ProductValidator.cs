@@ -1,6 +1,7 @@
-﻿namespace ECommerce
+﻿namespace Products.Validators
 {
     using FluentValidation;
+    using Products.ViewModels;
 
     public class ProductValidator : AbstractValidator<ProductViewModel>
     {

@@ -9,8 +9,8 @@
 
     public class Order : BaseEntity
     {
-        public new int Id { get; set; }
 
+        public string UserId { get; set; }
         public bool IsClosed { get; set; }
 
         public string Comment { get; set; }
@@ -19,11 +19,12 @@
 
         public decimal FinalPrice { get; set; }
 
-        public int? DiscountValue { get; set; }
+        public int DiscountValue { get; set; }
 
         public DateTimeOffset CreationDateTime { get; set; }
 
-        public DateTimeOffset? ClosedDateTime { get; set; }
+        public DateTimeOffset ClosedDateTime { get; set; }
+        public List<ProductOrder> ProductOrders { get; set; }
 
     }
 }

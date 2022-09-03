@@ -1,4 +1,4 @@
-﻿namespace Categories.Repositories
+﻿namespace Customers.Repositories
 {
     using Customers.Entities;
     using ECommerce.Application;

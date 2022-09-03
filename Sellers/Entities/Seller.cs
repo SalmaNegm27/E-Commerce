@@ -1,4 +1,4 @@
-﻿namespace Customers.Entities
+﻿namespace Sellers.Entities
 {
     using ECommerce.Application;
     using Products.Entities;

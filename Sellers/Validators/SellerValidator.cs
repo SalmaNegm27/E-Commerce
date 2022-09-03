@@ -1,7 +1,8 @@
-﻿namespace Categories.Validators
+﻿namespace Sellers.Validators
 {
-    using Categories.ViewModels;
+   
     using FluentValidation;
+    using Sellers.ViewModels;
 
     public class SellerValidator : AbstractValidator<SellerViewModel>
     {

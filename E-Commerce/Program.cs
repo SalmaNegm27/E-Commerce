@@ -1,15 +1,45 @@
+using Adresses.Enities;
+using Adresses.UnitOfWorks;
 using Categories.Entities;
 using Categories.Repositories;
 using Categories.UnitOfWorks;
 using Categories.Validators;
 using Categories.ViewModels;
+using Customers.Entities;
+using Customers.Repositories;
+using Customers.UnitOfWorks;
+using Customers.Validators;
+using Customers.ViewModels;
 using ECommerce;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Orders.Entities;
+using Orders.Repositories;
+using Orders.UnitOfWorks;
+using Orders.Validators;
+using Orders.ViewModels;
+using Payments.Entities;
+using Payments.Repositories;
+using Payments.UnitOfWorks;
+using Payments.Validators;
+using Payments.ViewModels;
 using Products.Entities;
+using Products.Reposirories;
+using Products.UnitOfWorks;
+using Products.Validators;
+using Products.ViewModels;
+using Sellers.Entities;
+using Sellers.Repositories;
+using Sellers.UnitOfWorks;
+using Sellers.Validators;
+using Sellers.ViewModels;
 using System.Reflection.Emit;
 using System.Text;
 
@@ -39,11 +69,35 @@ builder.Services.AddScoped<ICategoryUnitOfWork, CategoryUnitOfWork>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductUnitOfWork, ProductUnitOfWork>();
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(Product).Assembly,typeof(Category).Assembly);
+builder.Services.AddScoped<IAdressRepository, AdressRepository>();
+builder.Services.AddScoped<IAdressUnitOfWork, AdressUnitOfWork>();
+
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderUnitOfWork, OrderUnitOfWork>();
+
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<IPaymentUnitOfWork, PaymentUnitOfWork>();
+
+
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerUnitOfWork, CustomerUnitOfWork>();
+
+builder.Services.AddScoped<ISellerRepository, SellerRepository>();
+builder.Services.AddScoped<ISellerUnitOfWork, SellerUnitOfWork>();
+
+
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(Product).Assembly,typeof(Category).Assembly,typeof(Adress).Assembly,typeof(Order).Assembly,typeof(Payment).Assembly,typeof(Customer).Assembly, typeof(Seller).Assembly);
 
 
 builder.Services.AddScoped<IValidator<ProductViewModel>, ProductValidator>();
 builder.Services.AddScoped<IValidator<CategoryViewModel>, CategoryValidator>();
+builder.Services.AddScoped<IValidator<AdressViewModel>, AdressValidator>();
+builder.Services.AddScoped<IValidator<OrderViewModel>, OrderValidator>();
+builder.Services.AddScoped<IValidator<PaymentViewModel>, PaymentValidator>();
+builder.Services.AddScoped<IValidator<CustomerViewModel>, CustomerValidator>();
+builder.Services.AddScoped<IValidator<SellerViewModel>, SellerValidator>();
+
 
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()

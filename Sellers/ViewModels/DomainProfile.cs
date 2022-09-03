@@ -1,9 +1,9 @@
-﻿namespace Categories.ViewModels
+﻿namespace Sellers.ViewModels
 {
 
 
     using AutoMapper;
-    using Customers.Entities;
+    using Sellers.Entities;
 
     public class DomainProfile : Profile
     {

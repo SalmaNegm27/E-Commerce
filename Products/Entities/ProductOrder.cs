@@ -27,11 +27,8 @@
         public string Color { get; set; }
 
         public string Graver { get;  set; }
-
-      
-
-        public virtual Order Order { get;  set; }
-
-        public virtual Product Product { get; set; }
+        public  Product Product { get; set; }
+        public Guid ProductId { get; set; }
+        public Guid OrderId { get; set; }
     }
 }

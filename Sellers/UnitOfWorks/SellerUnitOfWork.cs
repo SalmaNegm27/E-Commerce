@@ -1,9 +1,11 @@
-﻿namespace Categories.UnitOfWorks
+﻿namespace Sellers.UnitOfWorks
 {
     
-    using Categories.Repositories;
+    
     using Customers.Entities;
     using ECommerce.Application;
+    using Sellers.Entities;
+    using Sellers.Repositories;
 
     public class SellerUnitOfWork : BaseUnitOfWork<Seller>, ISellerUnitOfWork
     {

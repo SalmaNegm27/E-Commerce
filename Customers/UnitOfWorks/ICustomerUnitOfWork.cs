@@ -1,4 +1,4 @@
-﻿namespace Categories.UnitOfWorks
+﻿namespace Customers.UnitOfWorks
 {
    
     using Customers.Entities;

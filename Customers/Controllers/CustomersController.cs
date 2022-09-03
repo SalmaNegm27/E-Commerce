@@ -1,11 +1,10 @@
 ﻿
-namespace Categories.Controllers
+namespace Customers.Controllers
 {
     using AutoMapper;
-  
-    using Categories.UnitOfWorks;
-    using Categories.ViewModels;
     using Customers.Entities;
+    using Customers.UnitOfWorks;
+    using Customers.ViewModels;
     using ECommerce.Application;
     using FluentValidation;
     using Microsoft.AspNetCore.Mvc;

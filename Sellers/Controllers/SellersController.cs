@@ -1,14 +1,15 @@
 ﻿
-namespace Categories.Controllers
+namespace Sellerss.Controllers
 {
     using AutoMapper;
   
-    using Categories.UnitOfWorks;
-    using Categories.ViewModels;
-    using Customers.Entities;
+    
     using ECommerce.Application;
     using FluentValidation;
     using Microsoft.AspNetCore.Mvc;
+    using Sellers.Entities;
+    using Sellers.UnitOfWorks;
+    using Sellers.ViewModels;
 
     [Route("api/[controller]")]
     [ApiController]

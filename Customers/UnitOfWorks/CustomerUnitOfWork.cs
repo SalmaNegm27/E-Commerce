@@ -1,8 +1,8 @@
-﻿namespace Categories.UnitOfWorks
+﻿namespace Customers.UnitOfWorks
 {
     
-    using Categories.Repositories;
     using Customers.Entities;
+    using Customers.Repositories;
     using ECommerce.Application;
 
     public class CustomerUnitOfWork : BaseUnitOfWork<Customer>, ICustomerUnitOfWork

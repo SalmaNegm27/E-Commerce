@@ -1,7 +1,8 @@
-﻿namespace ECommerce
+﻿namespace Products.UnitOfWorks
 {
     using ECommerce.Application;
-    using Products.Entities;
+    using global::Products.Entities;
+    using Products.Reposirories;
 
     public class ProductUnitOfWork : BaseUnitOfWork<Product>, IProductUnitOfWork
     {
