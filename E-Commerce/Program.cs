@@ -1,3 +1,5 @@
+
+
 using Adresses.Enities;
 using Adresses.UnitOfWorks;
 using Categories.Entities;
@@ -10,6 +12,11 @@ using Customers.Repositories;
 using Customers.UnitOfWorks;
 using Customers.Validators;
 using Customers.ViewModels;
+using Delivires.Entities;
+using Delivires.Repositories;
+using Delivires.UnitOfWorks;
+using Delivires.Validators;
+using Delivires.ViewModels;
 using ECommerce;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -85,9 +92,14 @@ builder.Services.AddScoped<ICustomerUnitOfWork, CustomerUnitOfWork>();
 builder.Services.AddScoped<ISellerRepository, SellerRepository>();
 builder.Services.AddScoped<ISellerUnitOfWork, SellerUnitOfWork>();
 
+builder.Services.AddScoped<IDeliveryRepository, DeliveryRepository>();
+builder.Services.AddScoped<IDeliveryUnitOfWork, DeliveryUnitOfWork>();
 
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(Product).Assembly,typeof(Category).Assembly,typeof(Adress).Assembly,typeof(Order).Assembly,typeof(Payment).Assembly,typeof(Customer).Assembly, typeof(Seller).Assembly);
+
+
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(Product).Assembly,typeof(Category).Assembly,typeof(Adress).Assembly,typeof(Order).Assembly,typeof(Payment).Assembly,typeof(Customer).Assembly, typeof(Seller).Assembly,typeof(Delivery).Assembly);
 
 
 builder.Services.AddScoped<IValidator<ProductViewModel>, ProductValidator>();
@@ -97,6 +109,7 @@ builder.Services.AddScoped<IValidator<OrderViewModel>, OrderValidator>();
 builder.Services.AddScoped<IValidator<PaymentViewModel>, PaymentValidator>();
 builder.Services.AddScoped<IValidator<CustomerViewModel>, CustomerValidator>();
 builder.Services.AddScoped<IValidator<SellerViewModel>, SellerValidator>();
+builder.Services.AddScoped<IValidator<DeliveryViewModel>, DeliveryValidator>();
 
 
 

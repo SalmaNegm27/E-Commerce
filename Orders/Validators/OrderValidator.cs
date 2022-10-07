@@ -8,7 +8,9 @@
     {
         public OrderValidator()
         {
-          
+          RuleFor(o=>o.BasePrice).NotEmpty().WithMessage("Base price aan not be empty");   
+          RuleFor(o=>o.FinalPrice).NotEmpty();
+
 
         }
     }

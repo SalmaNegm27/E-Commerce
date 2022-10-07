@@ -18,6 +18,6 @@
         public float Rate { get; set; }
 
         public List<ProductCategory> ProductCategories { get; set; }
-        public List<ProductOrder> ProductOrders { get; set; }
+        public List<OrderProduct> OrderProducts { get; set; }
     }
 }

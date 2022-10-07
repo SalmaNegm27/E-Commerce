@@ -24,7 +24,7 @@
         public DateTimeOffset CreationDateTime { get; set; }
 
         public DateTimeOffset ClosedDateTime { get; set; }
-        public List<ProductOrder> ProductOrders { get; set; }
+        public List<OrderProduct> OrderProducts { get; set; }
 
     }
 }

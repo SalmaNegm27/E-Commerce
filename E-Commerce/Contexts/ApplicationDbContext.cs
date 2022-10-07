@@ -10,6 +10,7 @@
     using Adresses.Enities;
     using Sellers.Entities;
     using Customers.Entities;
+    using Delivires.Entities;
 
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
@@ -30,6 +31,7 @@
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Adress).Assembly);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Seller).Assembly);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Customer).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(Delivery).Assembly);
 
 
 

@@ -16,7 +16,7 @@
             builder.ToTable("orders");
             builder.Property(o=>o.BasePrice).IsRequired();
             builder.Property(o => o.FinalPrice).IsRequired();
-            builder.HasMany(o=>o.ProductOrders).WithOne().HasForeignKey(o=>o.OrderId);
+            builder.HasMany(o=>o.OrderProducts).WithOne().HasForeignKey(o=>o.OrderId);
 
 
         }

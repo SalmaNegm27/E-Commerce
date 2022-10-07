@@ -10,13 +10,13 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class ProductOrderConfiguration : IEntityTypeConfiguration<ProductOrder>
+    public class OrderProductConfiguration : IEntityTypeConfiguration<OrderProduct>
     {
-        public void Configure(EntityTypeBuilder<ProductOrder> builder)
+        public void Configure(EntityTypeBuilder<OrderProduct> builder)
         {
             builder.ToTable("productOrders");
             builder.HasKey(p=> p.Id);
-            builder.HasOne(p => p.Product).WithMany(p => p.ProductOrders).HasForeignKey(p => p.ProductId);
+            builder.HasOne(p => p.Order).WithMany(p => p.OrderProducts).HasForeignKey(p => p.OrderId);
         }
     }
 }

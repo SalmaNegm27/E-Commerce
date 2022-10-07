@@ -26,7 +26,7 @@
         public string Color { get; set; }
 
         public string Graver { get; set; }
-        public Product Product { get; set; }
+        public ProductViewModel Product { get; set; }
         public Guid ProductId { get; set; }
         public Guid OrderId { get; set; }
     }

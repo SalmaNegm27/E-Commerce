@@ -2,7 +2,6 @@
 {
     using ECommerce.Application;
     using Orders.Entities;
-    using Products.ViewModels;
 
     public class OrderViewModel : BaseViewModel
     {
@@ -20,6 +19,6 @@
         public DateTimeOffset CreationDateTime { get; set; }
 
         public DateTimeOffset ClosedDateTime { get; set; }
-        public List<ProductOrder> ProductOrders { get; set; }
+        public List<OrderProduct> OrderProducts { get; set; }
     }
 }
