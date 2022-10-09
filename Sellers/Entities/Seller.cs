@@ -1,7 +1,6 @@
 ﻿namespace Sellers.Entities
 {
-    using ECommerce.Application;
-    using Products.Entities;
+
 
     public class Seller : BaseEntity
     {

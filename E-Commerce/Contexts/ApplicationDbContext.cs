@@ -28,7 +28,7 @@
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Category).Assembly);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Order).Assembly);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Payment).Assembly);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(Adress).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(Address).Assembly);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Seller).Assembly);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Customer).Assembly);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Delivery).Assembly);

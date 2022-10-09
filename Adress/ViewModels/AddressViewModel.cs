@@ -1,9 +1,10 @@
 ﻿namespace Categories.ViewModels
 {
-    using ECommerce.Application;
+    using Common.ViewModels;
+   
   
 
-    public class AdressViewModel : BaseViewModel
+    public class AddressViewModel : BaseViewModel
     {
         public string Street { get; set; }
 

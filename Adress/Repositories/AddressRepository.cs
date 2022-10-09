@@ -1,14 +1,10 @@
 ﻿namespace Adresses.UnitOfWorks
 {
-    using Adresses.Enities;
-    using ECommerce;
-    using ECommerce.Application;
-    using Microsoft.EntityFrameworkCore;
    
 
-    public class AdressRepository : BaseRepositpry<Adress>, IAdressRepository
+    public class AddressRepository : BaseRepositpry<Address>, IAddressRepository
     {
-        public AdressRepository(DbContext context) : base(context)
+        public AddressRepository(DbContext context) : base(context)
         {
         }
 

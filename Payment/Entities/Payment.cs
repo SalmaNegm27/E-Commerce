@@ -1,9 +1,5 @@
 ﻿namespace Payments.Entities
 {
-    using ECommerce.Application;
-    using Orders.Entities;
-    using System;
-
     public class Payment : BaseEntity
     {
         public string Name { get;  set; }

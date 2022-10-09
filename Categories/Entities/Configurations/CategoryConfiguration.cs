@@ -1,10 +1,6 @@
 ﻿namespace ECommerce.Entities.Configurations
 {
-    using Categories.Entities;
-    using ECommerce.Application;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
+   
     public class CategoryConfiguration : BaseEntityConfiguration<Category>
     {
         public override void Configure(EntityTypeBuilder<Category> builder)

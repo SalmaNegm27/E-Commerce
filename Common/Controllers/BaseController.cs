@@ -1,11 +1,14 @@
-﻿namespace ECommerce.Application
+﻿namespace Common.Controllers
 {
     using AutoMapper;
+    using Common.Entites;
+    using Common.UnitOfWorks;
+    using Common.ViewModels;
     using FluentValidation;
     using Microsoft.AspNetCore.Mvc;
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseController<TEntity, TViewModel> : ControllerBase where 
+    public class BaseController<TEntity, TViewModel> : ControllerBase where
         TEntity : BaseEntity
         where TViewModel : BaseViewModel
     {
@@ -22,7 +25,7 @@
         // GET: api/<ProductsController>
         [HttpGet]
 
-        public async Task<IActionResult> GetAll()
+        public virtual async Task<IActionResult> GetAll()
         {
             var entities = await _baseUnitOfWork.ReadAsync();
             return Ok(entities);
@@ -30,18 +33,18 @@
 
         // GET api/<ProductsController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id)
+        public virtual async Task<IActionResult> Get(Guid id)
         {
-            TEntity  entity = await _baseUnitOfWork.ReadByIdAsync(id);
-          
+            TEntity entity = await _baseUnitOfWork.ReadByIdAsync(id);
+
             return Ok(entity);
         }
 
         // POST api/<ProductsController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] TViewModel viewModel)
+        public virtual async Task<IActionResult> Post([FromBody] TViewModel viewModel)
         {
-            var  validationResult = await _validator.ValidateAsync(viewModel);
+            var validationResult = await _validator.ValidateAsync(viewModel);
             if (!validationResult.IsValid)
                 return BadRequest(new { errors = validationResult.Errors });
 
@@ -52,7 +55,7 @@
 
         // PUT api/<ProductsController>/5
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] TViewModel viewModel)
+        public virtual async Task<IActionResult> Put([FromBody] TViewModel viewModel)
         {
             var validationResult = await _validator.ValidateAsync(viewModel);
             if (!validationResult.IsValid)
@@ -64,11 +67,11 @@
         }
         // DELETE api/<ProductsController>/5
         [HttpDelete("{id}")]
-        public async Task Delete(Guid id)
+        public virtual  async Task Delete(Guid id)
         {
             await _baseUnitOfWork.DeleteAsync(id);
         }
     }
 }
-    
+
 

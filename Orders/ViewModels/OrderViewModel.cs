@@ -1,8 +1,6 @@
 ﻿namespace Orders.ViewModels
 {
-    using ECommerce.Application;
-    using Orders.Entities;
-
+    
     public class OrderViewModel : BaseViewModel
     {
         public string UserId { get; set; }

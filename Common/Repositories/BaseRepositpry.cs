@@ -1,6 +1,6 @@
-﻿
-namespace ECommerce.Application
+﻿namespace Common.Repositories
 {
+    using Common.Entites;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
     using System;
@@ -19,24 +19,24 @@ namespace ECommerce.Application
             _Set = context.Set<T>();
         }
 
-        public async Task<T> AddAsync(T entity)
+        public  virtual async Task<T> AddAsync(T entity)
         {
             return (await _Set.AddAsync(entity)).Entity;
-            
-           
-        }
-        public async Task<T> GetByIdAsync(Guid id) => await _Set.FirstOrDefaultAsync(c => c.Id == id);
 
-        public  async Task<T> DeleteAsync(Guid id)
+
+        }
+        public virtual async Task<T> GetByIdAsync(Guid id) => await _Set.FirstOrDefaultAsync(c => c.Id == id);
+
+        public  virtual async Task<T> DeleteAsync(Guid id)
         {
-          var result=  await GetByIdAsync(id);
+            var result = await GetByIdAsync(id);
             if (result == null)
                 throw new Exception("The Entity doesnt exist");
             _Set.Remove(result);
-            return result;    
+            return result;
         }
-  
-        public async Task<T> EditAsync(T entity)
+
+        public virtual  async Task<T> EditAsync(T entity)
         {
             T entityEntry = await GetByIdAsync(entity.Id);
             if (entityEntry == null)
@@ -45,9 +45,9 @@ namespace ECommerce.Application
                 return _Set.Update(entity).Entity;
         }
 
-       
 
-        public async Task<List<T>> GetByExprissionAsync(Expression<Func<T, bool>> expression) => await _Set.ToListAsync();
+
+        public  virtual async Task<List<T>> GetByExprissionAsync(Expression<Func<T, bool>> expression) => await _Set.ToListAsync();
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {

@@ -1,9 +1,6 @@
 ﻿namespace Customers.Validators
 {
-    using Categories.ViewModels;
-    using Customers.ViewModels;
-    using FluentValidation;
-
+    
     public class CustomerValidator : AbstractValidator<CustomerViewModel>
     {
         public CustomerValidator()

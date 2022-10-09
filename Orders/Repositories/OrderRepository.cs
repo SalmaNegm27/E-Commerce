@@ -1,10 +1,6 @@
 ﻿namespace Orders.Repositories
 {
    
-    using ECommerce.Application;
-    using Microsoft.EntityFrameworkCore;
-    using Orders.Entities;
-
     public class OrderRepository : BaseRepositpry<Order>, IOrderRepository
     {
         public OrderRepository(DbContext context) : base(context)

@@ -1,8 +1,7 @@
 ﻿namespace ECommerce.Entities.Configurations
 {
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
+    
+    
     public class ProductCategoryConfiguration : IEntityTypeConfiguration<ProductCategory>
     {
         public void Configure(EntityTypeBuilder<ProductCategory> builder)

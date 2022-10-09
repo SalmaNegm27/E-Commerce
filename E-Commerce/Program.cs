@@ -1,54 +1,5 @@
 
 
-using Adresses.Enities;
-using Adresses.UnitOfWorks;
-using Categories.Entities;
-using Categories.Repositories;
-using Categories.UnitOfWorks;
-using Categories.Validators;
-using Categories.ViewModels;
-using Customers.Entities;
-using Customers.Repositories;
-using Customers.UnitOfWorks;
-using Customers.Validators;
-using Customers.ViewModels;
-using Delivires.Entities;
-using Delivires.Repositories;
-using Delivires.UnitOfWorks;
-using Delivires.Validators;
-using Delivires.ViewModels;
-using ECommerce;
-using FluentValidation;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
-using Orders.Entities;
-using Orders.Repositories;
-using Orders.UnitOfWorks;
-using Orders.Validators;
-using Orders.ViewModels;
-using Payments.Entities;
-using Payments.Repositories;
-using Payments.UnitOfWorks;
-using Payments.Validators;
-using Payments.ViewModels;
-using Products.Entities;
-using Products.Reposirories;
-using Products.UnitOfWorks;
-using Products.Validators;
-using Products.ViewModels;
-using Sellers.Entities;
-using Sellers.Repositories;
-using Sellers.UnitOfWorks;
-using Sellers.Validators;
-using Sellers.ViewModels;
-using System.Reflection.Emit;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -76,8 +27,8 @@ builder.Services.AddScoped<ICategoryUnitOfWork, CategoryUnitOfWork>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductUnitOfWork, ProductUnitOfWork>();
 
-builder.Services.AddScoped<IAdressRepository, AdressRepository>();
-builder.Services.AddScoped<IAdressUnitOfWork, AdressUnitOfWork>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<IAddressUnitOfWork, AddressUnitOfWork>();
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderUnitOfWork, OrderUnitOfWork>();
@@ -99,12 +50,12 @@ builder.Services.AddScoped<IDeliveryUnitOfWork, DeliveryUnitOfWork>();
 
 
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(Product).Assembly,typeof(Category).Assembly,typeof(Adress).Assembly,typeof(Order).Assembly,typeof(Payment).Assembly,typeof(Customer).Assembly, typeof(Seller).Assembly,typeof(Delivery).Assembly);
+builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(Product).Assembly,typeof(Category).Assembly,typeof(Address).Assembly,typeof(Order).Assembly,typeof(Payment).Assembly,typeof(Customer).Assembly, typeof(Seller).Assembly,typeof(Delivery).Assembly);
 
 
 builder.Services.AddScoped<IValidator<ProductViewModel>, ProductValidator>();
 builder.Services.AddScoped<IValidator<CategoryViewModel>, CategoryValidator>();
-builder.Services.AddScoped<IValidator<AdressViewModel>, AdressValidator>();
+builder.Services.AddScoped<IValidator<AddressViewModel>, AddressValidator>();
 builder.Services.AddScoped<IValidator<OrderViewModel>, OrderValidator>();
 builder.Services.AddScoped<IValidator<PaymentViewModel>, PaymentValidator>();
 builder.Services.AddScoped<IValidator<CustomerViewModel>, CustomerValidator>();
@@ -138,6 +89,10 @@ builder.Services.AddAuthentication(options =>
         };
 
     });
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 
 
 builder.Services.AddMvc();

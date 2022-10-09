@@ -1,11 +1,7 @@
 ﻿namespace Payments.Repositories
 {
     
-    using ECommerce;
-    using ECommerce.Application;
-    using Microsoft.EntityFrameworkCore;
-    using Payments.Entities;
-
+   
     public class PaymentRepository : BaseRepositpry<Payment>, IPaymentRepository
     {
         public PaymentRepository(DbContext context) : base(context)

@@ -1,4 +1,4 @@
-﻿namespace ECommerce.Application
+﻿namespace Common.ViewModels
 {
     public class BaseViewModel
     {

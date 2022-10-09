@@ -1,6 +1,6 @@
 ﻿namespace Products.ViewModels
 {
-    using ECommerce.Application;
+   
     
 
     public class ProductViewModel :BaseViewModel

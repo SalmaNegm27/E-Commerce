@@ -2,9 +2,7 @@
 {
 
 
-    using AutoMapper;
-    using Orders.Entities;
-
+    
     public class DomainProfile : Profile
     {
         public DomainProfile()

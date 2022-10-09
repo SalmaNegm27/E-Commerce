@@ -1,12 +1,6 @@
 ﻿namespace Orders.Entities
 {
-    using ECommerce.Application;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
+   
     public class OrderProduct: BaseEntity
     {
         public int Amount { get; set; }

@@ -1,14 +1,7 @@
 ﻿
 namespace Orders.Controllers
 {
-    using AutoMapper;
- 
-    using ECommerce.Application;
-    using FluentValidation;
-    using Microsoft.AspNetCore.Mvc;
-    using Orders.Entities;
-    using Orders.UnitOfWorks;
-    using Orders.ViewModels;
+  
 
     [Route("api/[controller]")]
     [ApiController]

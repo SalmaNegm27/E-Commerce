@@ -1,10 +1,6 @@
 ﻿namespace Customers.Repositories
 {
-    using Customers.Entities;
-    using ECommerce;
-    using ECommerce.Application;
-    using Microsoft.EntityFrameworkCore;
-   
+    
 
     public class CustomerRepository : BaseRepositpry<Customer>, ICustomerRepository
     {

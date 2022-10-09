@@ -1,13 +1,7 @@
 ﻿
 namespace Payments.Controllers
 {
-    using AutoMapper;
-    using ECommerce.Application;
-    using FluentValidation;
-    using Microsoft.AspNetCore.Mvc;
-    using Payments.Entities;
-    using Payments.UnitOfWorks;
-    using Payments.ViewModels;
+    
 
     [Route("api/[controller]")]
     [ApiController]

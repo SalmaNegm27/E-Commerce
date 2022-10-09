@@ -1,9 +1,6 @@
 ﻿namespace Payments.Validators
 {
-   
-    using FluentValidation;
-    using Payments.ViewModels;
-
+  
     public class PaymentValidator : AbstractValidator<PaymentViewModel>
     {
         public PaymentValidator()

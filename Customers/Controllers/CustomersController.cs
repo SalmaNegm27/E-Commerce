@@ -1,13 +1,7 @@
 ﻿
 namespace Customers.Controllers
 {
-    using AutoMapper;
-    using Customers.Entities;
-    using Customers.UnitOfWorks;
-    using Customers.ViewModels;
-    using ECommerce.Application;
-    using FluentValidation;
-    using Microsoft.AspNetCore.Mvc;
+   
 
     [Route("api/[controller]")]
     [ApiController]

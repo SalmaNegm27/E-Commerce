@@ -1,11 +1,6 @@
 ﻿namespace Categories.Repositories
 {
-    using Categories.Entities;
-    using ECommerce;
-    using ECommerce.Application;
-    using Microsoft.EntityFrameworkCore;
-   
-
+    
     public class CategoryRepository : BaseRepositpry<Category>, ICategoryRepository
     {
         public CategoryRepository(DbContext context) : base(context)

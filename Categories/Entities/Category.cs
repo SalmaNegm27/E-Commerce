@@ -1,8 +1,6 @@
 ﻿namespace Categories.Entities
 {
-using ECommerce;
-using ECommerce.Application;
-
+   
 
     public class Category : BaseEntity
     {

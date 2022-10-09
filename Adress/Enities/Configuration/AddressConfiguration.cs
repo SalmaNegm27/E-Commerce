@@ -1,17 +1,9 @@
 ﻿namespace Adresses.Enities.Configuration
 {
-    using ECommerce.Application;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    public class AdressConfiguration : BaseEntityConfiguration<Adress>
+   
+    public class AddressConfiguration : BaseEntityConfiguration<Address>
     {
-        public override void Configure(EntityTypeBuilder<Adress> builder)
+        public override void Configure(EntityTypeBuilder<Address> builder)
         {
             builder.ToTable("Adrersses");
             builder.Property(pc => pc.Street).IsRequired().HasMaxLength(255);

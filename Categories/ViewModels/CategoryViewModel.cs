@@ -1,7 +1,6 @@
 ﻿namespace Categories.ViewModels
 {
-    using ECommerce.Application;
-    using Products.ViewModels;
+    
 
     public class CategoryViewModel : BaseViewModel
     {

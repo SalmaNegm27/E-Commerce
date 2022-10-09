@@ -1,8 +1,6 @@
 ﻿namespace Products.Entities
 {
-    using ECommerce;
-    using ECommerce.Application;
-    using Orders.Entities;
+    
 
     public class Product : BaseEntity
 

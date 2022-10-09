@@ -1,8 +1,6 @@
 ﻿namespace Categories.Validators
 {
-    using Categories.ViewModels;
-    using FluentValidation;
-
+    
     public class CategoryValidator : AbstractValidator<CategoryViewModel>
     {
         public CategoryValidator()

@@ -1,10 +1,6 @@
 ﻿namespace Products.Reposirories
 {
-    using ECommerce.Application;
-    using Microsoft.EntityFrameworkCore;
-    using Products.Entities;
-    using System.Linq.Expressions;
-
+    
     public class ProductRepository : BaseRepositpry<Product>, IProductRepository
     {
         public ProductRepository(DbContext context) : base(context)

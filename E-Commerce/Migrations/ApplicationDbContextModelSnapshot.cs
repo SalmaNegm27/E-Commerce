@@ -22,7 +22,7 @@ namespace ECommerce.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Adresses.Enities.Adress", b =>
+            modelBuilder.Entity("Adresses.Enities.Address", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -136,6 +136,40 @@ namespace ECommerce.Migrations
                         .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("customers", (string)null);
+                });
+
+            modelBuilder.Entity("Delivires.Entities.Delivery", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AddressId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("ConcurrencyStamp")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<DateTime>("CreationData")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AddressId")
+                        .IsUnique();
+
+                    b.HasIndex("OrderId")
+                        .IsUnique();
+
+                    b.ToTable("deliveries", (string)null);
                 });
 
             modelBuilder.Entity("ECommerce.ProductCategory", b =>
@@ -372,7 +406,7 @@ namespace ECommerce.Migrations
                     b.Property<decimal>("BasePrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTimeOffset?>("ClosedDateTime")
+                    b.Property<DateTimeOffset>("ClosedDateTime")
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Comment")
@@ -404,7 +438,7 @@ namespace ECommerce.Migrations
                     b.ToTable("orders", (string)null);
                 });
 
-            modelBuilder.Entity("Orders.Entities.ProductOrder", b =>
+            modelBuilder.Entity("Orders.Entities.OrderProduct", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -574,7 +608,7 @@ namespace ECommerce.Migrations
 
             modelBuilder.Entity("Customers.Entities.Customer", b =>
                 {
-                    b.HasOne("Adresses.Enities.Adress", "Adress")
+                    b.HasOne("Adresses.Enities.Address", "Adress")
                         .WithOne()
                         .HasForeignKey("Customers.Entities.Customer", "AdreesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -585,6 +619,25 @@ namespace ECommerce.Migrations
                         .HasForeignKey("Customers.Entities.Customer", "UserId");
 
                     b.Navigation("Adress");
+                });
+
+            modelBuilder.Entity("Delivires.Entities.Delivery", b =>
+                {
+                    b.HasOne("Adresses.Enities.Address", "Address")
+                        .WithOne()
+                        .HasForeignKey("Delivires.Entities.Delivery", "AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Orders.Entities.Order", "Order")
+                        .WithOne()
+                        .HasForeignKey("Delivires.Entities.Delivery", "OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Address");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("ECommerce.ProductCategory", b =>
@@ -655,21 +708,21 @@ namespace ECommerce.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Orders.Entities.ProductOrder", b =>
+            modelBuilder.Entity("Orders.Entities.OrderProduct", b =>
                 {
-                    b.HasOne("Orders.Entities.Order", null)
-                        .WithMany("ProductOrders")
+                    b.HasOne("Orders.Entities.Order", "Order")
+                        .WithMany("OrderProducts")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Products.Entities.Product", "Product")
-                        .WithMany("ProductOrders")
+                    b.HasOne("Products.Entities.Product", null)
+                        .WithMany("OrderProducts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("Payments.Entities.Payment", b =>
@@ -697,14 +750,14 @@ namespace ECommerce.Migrations
 
             modelBuilder.Entity("Orders.Entities.Order", b =>
                 {
-                    b.Navigation("ProductOrders");
+                    b.Navigation("OrderProducts");
                 });
 
             modelBuilder.Entity("Products.Entities.Product", b =>
                 {
-                    b.Navigation("ProductCategories");
+                    b.Navigation("OrderProducts");
 
-                    b.Navigation("ProductOrders");
+                    b.Navigation("ProductCategories");
                 });
 
             modelBuilder.Entity("Sellers.Entities.Seller", b =>

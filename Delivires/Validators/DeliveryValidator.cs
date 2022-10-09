@@ -1,8 +1,5 @@
 ﻿namespace Delivires.Validators
 {
-    using Delivires.ViewModels;
-    using FluentValidation;
-    
 
     public class DeliveryValidator : AbstractValidator<DeliveryViewModel>
     {

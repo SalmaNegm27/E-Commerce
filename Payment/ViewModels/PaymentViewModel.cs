@@ -1,6 +1,6 @@
 ﻿namespace Payments.ViewModels
 {
-    using ECommerce.Application;
+   
   
 
     public class PaymentViewModel : BaseViewModel

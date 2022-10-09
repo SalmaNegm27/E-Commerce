@@ -1,7 +1,6 @@
 ﻿namespace Customers.ViewModels
 {
-    using ECommerce.Application;
-  
+    
 
     public class CustomerViewModel : BaseViewModel
     {

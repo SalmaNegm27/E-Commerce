@@ -26,16 +26,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Adress\Adresses.csproj" />
+    <ProjectReference Include="..\Adress\Addresses.csproj" />
     <ProjectReference Include="..\Categories\Catgories.csproj" />
-    <ProjectReference Include="..\Category\Category.csproj" />
-    <ProjectReference Include="..\Comman\Comman.csproj" />
+   
     <ProjectReference Include="..\Customers\Customers.csproj" />
     <ProjectReference Include="..\Delivires\Delivires.csproj" />
     <ProjectReference Include="..\Orders\Orders.csproj" />
     <ProjectReference Include="..\Payment\Payments.csproj" />
     <ProjectReference Include="..\Products\Products.csproj" />
-    <ProjectReference Include="..\Product\Product.csproj" />
+
     <ProjectReference Include="..\Sellers\Sellers.csproj" />
   </ItemGroup>
 

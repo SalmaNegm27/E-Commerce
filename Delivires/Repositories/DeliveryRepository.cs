@@ -1,9 +1,6 @@
 ﻿namespace Delivires.Repositories
 {
-    using Delivires.Entities;
-    using ECommerce.Application;
-    using Microsoft.EntityFrameworkCore;
-    
+   
 
     public class DeliveryRepository : BaseRepositpry<Delivery>, IDeliveryRepository
     {
